@@ -1,0 +1,124 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+.card-img-top {
+    object-fit: cover; /* This will make sure to cover the area without stretching */
+    width: 100%; /* Use the full width of the card */
+    height: 200px; /* Fixed height for all images */
+    border-radius: 0.5rem; /* Rounded corners, you can adjust as needed */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+
+
+.envoi {
+    background-color: #341bf3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.envoi:hover {
+    background-color: #0056b3;
+}
+
+.erreur {
+    color: red;
+    margin: 5px;
+}
+
+.info-animal {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+.info-animal p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.info-animal p:first-child {
+    font-weight: bold;
+    margin-top: 0;
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #0b437f;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0472e4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}

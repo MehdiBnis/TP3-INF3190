@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Adoption Kangu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('accueil') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('form') }}">Mise en Adoption</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+    <!-- Hero Section -->
+    <header class="bg-primary text-white text-center py-5 mb-4">
+        <div class="container">
+            <h1 class="fw-bolder">Bienvenue à Adoption Kangu</h1>
+            <p class="lead">Adoptez un animal de compagnie</p>
+        </div>
+    </header>
+
+    <!-- Inside index.html -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Les nouveaux de cette semaine</h2>
+        <div class="row">
+            {% for animal in newest_animaux %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/' ~ animal.nom ~ '.jpg') }}"
+                         class="card-img-top"
+                         alt="{{ animal.nom }}"
+                         onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/default.png') }}'">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ animal.nom }}</h5>
+                        <p class="card-text">{{ animal.description }}</p>
+                        <a href="{{ url_for('info_animal', animal_id=animal.id) }}" class="btn btn-primary">Adoptez-moi</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+ 
+     <!-- Barre de recherche -->
+     <section class="container my-5">
+         <div class="row">
+             <div class="col-md-6 offset-md-3">
+                 <h2 class="text-center mb-4">Recherchez un animal</h2>
+                 <form class="d-flex" action="/recherche" method="get">
+                     <input class="form-control me-2" type="search" id="search-input" name="q" placeholder="Recherchez par nom" required>
+                     <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                 </form>
+             </div>
+         </div>
+     </section>
+ 
+     <!-- Bas de la page -->
+     <footer class="py-4 bg-dark text-white-50">
+         <div class="container text-center">
+             <small>Kangu © 2024. Tous droits réservés.</small>
+         </div>
+     </footer>
+ 
+     <!-- Bootstrap Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+ </body>
+ </html>
+ 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats de recherche</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+
+    <!-- Barre de recherche -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="container-fluid">
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto">
+                     <li class="nav-item">
+                         <a class="nav-link active" aria-current="page" href="{{ url_for('accueil') }}">Accueil</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('form') }}">Mise en Adoption</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+
+    <main class="container mt-5">
+        <h1 class="mb-4">Résultats de Recherche</h1>
+        {% for animal in animaux %}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='images/' ~ animal.nom ~ '.jpg') }}"
+                             class="img-fluid rounded-start"
+                             alt="Photo de {{ animal.nom }}"
+                             onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/default.png') }}'">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ animal.nom }}</h2>
+                        <p class="card-text">{{ animal.description }}</p>
+                        <a href="{{ url_for('info_animal', animal_id=animal.id) }}" class="btn btn-primary">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">Aucun animal trouvé.</p>
+        {% endfor %}
+    </main>
+
+    <!-- Bas de la page -->
+    <footer class="py-4 bg-dark text-white-50">
+         <div class="container text-center">
+             <small>Kangu © 2024. Tous droits réservés.</small>
+         </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

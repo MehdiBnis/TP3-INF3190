@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mise en adoption</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Entête du site -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="container-fluid">
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav ms-auto">
+                     <li class="nav-item">
+                         <a class="nav-link active" aria-current="page" href="{{ url_for('accueil') }}">Accueil</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('form') }}">Mise en Adoption</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+
+    <!-- Formulaire de mise en adoption -->
+    <form action="/formulaire" method="post" id="formulaire">
+        <h3>Informations de l'animal</h3>
+
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br>
+        <span class="erreur" id="erreur-nom"></span>
+
+        <label for="espece">Espèce :</label>
+        <input type="text" id="espece" name="espece" required><br>
+        <span class="erreur" id="erreur-espece"></span>
+
+        <label for="race">Race :</label>
+        <input type="text" id="race" name="race" required><br>
+        <span class="erreur" id="erreur-race"></span>
+
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" required><br>
+        <span class="erreur" id="erreur-age"></span>
+
+        <label for="description">Description :</label>
+        <input type="text" id="description" name="description" required><br>
+        <span class="erreur" id="erreur-description"></span>
+
+        <h3>Vos informations de contact</h3>
+
+        <label for="courriel">Adresse courriel :</label>
+        <input type="email" id="courriel" name="courriel" required><br>
+        <span class="erreur" id="erreur-courriel"></span>
+
+        <h3>Point de retrait de l'animal</h3>
+
+        <label for="adresse">Adresse civique :</label>
+        <input type="text" id="adresse" name="adresse" required><br>
+        <span class="erreur" id="erreur-adresse"></span>
+
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" required><br>
+        <span class="erreur" id="erreur-ville"></span>
+
+        <label for="cp">Code postal :</label>
+        <input type="text" id="cp" name="cp" required><br>
+        <span class="erreur" id="erreur-cp"></span>
+
+        <button type="submit" class="envoi" id="envoi">Soumettre</button><br>
+        <span class="erreur" id="erreur-formulaire"></span>
+    </form>
+
+    <!-- Bas de la page -->
+    <footer class="py-4 bg-dark text-white-50">
+         <div class="container text-center">
+             <small>Kangu © 2024. Tous droits réservés.</small>
+         </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
